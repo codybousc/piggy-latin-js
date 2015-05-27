@@ -11,4 +11,12 @@ describe("pig", function() {
     expect(pig("bball")).to.equal("allbbay");
   });
 
+  it("will stop if the next letter after a consonant is a vowel", function() {
+    expect(pig("bbcall")).to.equal("allbbcay");
+  });
+
+  it("will remove any 'qu' sequence within a word and move it to the end of the word", function() {
+    expect(pig("quantom")).to.equal("antomquay");
+  });
+
 });
