@@ -1,21 +1,40 @@
 
+var pig = function(words) {
 
+var word = words.split("");
+var vowels = ["a", "e", "i", "o", "u"];
+var wordLength = word.length;
+var ending = "ay";
+var p =[];
+var counter = 0
+var removedLet;
 
-var pig = function(word) {
-  var result;
-  var vowel = ["a", "e", "i", "o", "u"];
-  var firstLet = word.slice(0,1);
-  var rest_word = word.slice(1);
-  var ending = "ay";
+  if (word[0] === "a" || word[0] === "e" || word[0] === "i" || word[0] === "o" || word[0] === "u") {
+    var vowelWord = word + ending;
+    var finalVowelWord = vowelWord.replace(/,/g, '');
+    return finalVowelWord;
+} else {
 
-  if (firstLet === "a" || firstLet === "e" || firstLet === "i" || firstLet === "o" || firstLet === "u") {
+    for(var i = 0; i < wordLength; i++) {
+    var isConsonant = vowels.indexOf(word[i]);
 
-    return word + ending;
+       if (isConsonant === -1) {
+          removedLet = word.slice(i, i + 1);
+          p.push(removedLet);
+          counter += 1
+        }
+       else if(isConsonant !== -1) {
+          break;
+        }
+       else {
+          alert("hello from else");
+        }
+    }
 
-  } else  {
-
-    result = rest_word + firstLet + ending;
-    return result;
-
+    var new_arr = word + p + ending;
+    var finalWord = new_arr.replace(/,/g, '');
+    var ffw = finalWord.substring(counter);
+    return ffw;
   }
+
 };

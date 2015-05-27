@@ -7,4 +7,8 @@ describe("pig", function() {
     expect(pig("carl")).to.equal("arlcay");
   });
 
+  it("will remove the second letter of a word, if consonant, and place letter and end of word + add ay.", function() {
+    expect(pig("bball")).to.equal("allbbay");
+  });
+
 });
