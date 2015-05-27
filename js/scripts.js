@@ -19,16 +19,16 @@ var removedQ;
     var isConsonant = vowels.indexOf(word[i]);
 
      if (isConsonant === -1) {
-            if(word[i] === "q" && word[i + 1] === "u") {
-              removedQ = word.slice(i, i + 2 );
-              p.push(removedQ);
-              counter += 2;
-             }
-              else {
-              removedLet = word.slice(i, i + 1);
-              p.push(removedLet);
-              counter += 1;
-              }
+        if(word[i] === "q" && word[i + 1] === "u") {
+            removedQ = word.slice(i, i + 2 );
+            p.push(removedQ);
+            counter += 2;
+        }
+        else {
+            removedLet = word.slice(i, i + 1);
+            p.push(removedLet);
+            counter += 1;
+        }
      }
        else if(isConsonant !== -1) {
           break;
@@ -41,7 +41,22 @@ var removedQ;
     var new_arr = word + p + ending;
     var finalWord = new_arr.replace(/,/g, '');
     var ffw = finalWord.substring(counter);
+    debugger
     return ffw;
+
   }
 
 };
+
+
+$(document).ready(function() {
+  $("form#pig-latin").submit(function(event) {
+    var words = $("input#word").val();
+    var result = pig(words);
+
+    $(".init_word").text(words);
+    $(".latinized").text(pig(words));
+
+    event.preventDefault();
+  });
+});
